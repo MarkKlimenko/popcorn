@@ -9,12 +9,16 @@ buildscript {
         coverageExclusion = ['**/**']
 
         // versions
-        codeQualityVersion = "1.0"
+        codeQualityVersion = "1.1"
     }
 
     dependencies {
         classpath "com.markklim.plugins:popcorn-quality:$codeQualityVersion"
     }
+}
+
+plugins {
+    id "com.markklim.popcorn.quality" version "$codeQualityVersion"
 }
 ```
 
