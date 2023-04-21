@@ -3,6 +3,7 @@
 Gradle quality plugin
 
 ## Usage
+### Gradle setup
 ```
 buildscript {
     ext {
@@ -21,6 +22,28 @@ plugins {
     id "com.markklim.popcorn.quality" version "$codeQualityVersion"
 }
 ```
+### Command
+```
+./gradlew clean build
+```
+### Configs
+Configs location
+```
+gradle/style/config
+```
+Java config types
+```
+"checkstyle/checkstyle.xml"
+"checkstyle/suppressions.xml"
+"pmd/pmd.xml"
+"spotbugs/exclude.xml"
+"spotbugs/html-report-style.xsl"
+"codenarc/codenarc.xml"
+```
+Kotlin config types
+```
+"detekt/config.yml"
+```
 
 ## Plugin local testing
 Add to plugin `build.gradle` file
@@ -36,12 +59,10 @@ publishing {
     }
 }
 ```
-
 Start publishing
 ```
 ./gradlew publish
 ```
-
 Add to target project `settings.gradle` file
 ```
 // https://docs.gradle.org/current/userguide/plugins.html#sec:custom_plugin_repositories
