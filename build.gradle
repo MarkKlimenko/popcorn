@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.markklim.plugins'
-version = "1.0"
+version = "1.1"
 
 repositories {
     mavenCentral()
@@ -28,8 +28,8 @@ dependencies {
 }
 
 gradlePlugin {
-    website = 'https://markklim.com'
-    vcsUrl = 'https://github.com/MarkKlimenko/plugins'
+    website = 'https://github.com/MarkKlimenko'
+    vcsUrl = 'https://github.com/MarkKlimenko/popcorn'
 
     plugins {
         codeQuality {
@@ -42,21 +42,21 @@ gradlePlugin {
         codeQualityJava {
             id = 'com.markklim.popcorn.quality.java'
             displayName = 'Java code quality plugin'
-            description = 'Java Kotlin code quality plugin'
+            description = 'Java code quality plugin'
             tags.addAll('java')
             implementationClass = 'com.markklim.popcorn.plugin.java.CodeQualityJavaPlugin'
         }
         codeQualityKotlin {
             id = 'com.markklim.popcorn.quality.kotlin'
             displayName = 'Kotlin code quality plugin'
-            description = 'Java Kotlin code quality plugin'
+            description = 'Kotlin code quality plugin'
             tags.addAll('kotlin')
             implementationClass = 'com.markklim.popcorn.plugin.kotlin.CodeQualityKotlinPlugin'
         }
         codeCoverage {
             id = 'com.markklim.popcorn.coverage'
             displayName = 'Code coverage plugin'
-            description = 'Java Kotlin code quality plugin'
+            description = 'Code coverage plugin'
             tags.addAll('java', 'kotlin', 'test')
             implementationClass = 'com.markklim.popcorn.plugin.coverage.CodeCoveragePlugin'
         }
