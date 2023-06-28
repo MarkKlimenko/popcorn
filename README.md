@@ -3,8 +3,12 @@
 Gradle quality plugin
 
 ## Usage
+
 ### Gradle setup
-```
+
+```.groovy
+// build.gradle
+
 buildscript {
     ext {
         coverageExclusion = ['**/**']
@@ -12,26 +16,44 @@ buildscript {
         // versions
         codeQualityVersion = "1.1"
     }
-
-    dependencies {
-        classpath "com.markklim.plugins:popcorn-quality:$codeQualityVersion"
-    }
 }
 
 plugins {
     id "com.markklim.popcorn.quality" version "$codeQualityVersion"
 }
 ```
-### Command
+
+```.kotlin
+// build.gradle.kts
+
+buildscript {
+    extra.apply {
+        set("coverageExclusion", listOf("**/**"))
+    }
+}
+
+plugins {
+    val codeQualityVersion = "1.1"
+    id("com.markklim.popcorn.quality") version "$codeQualityVersion"
+}
 ```
+
+### Command
+
+```.shell
 ./gradlew clean build
 ```
+
 ### Configs
+
 Configs location
+
 ```
 gradle/style/config
 ```
+
 Java config types
+
 ```
 "checkstyle/checkstyle.xml"
 "checkstyle/suppressions.xml"
@@ -40,14 +62,18 @@ Java config types
 "spotbugs/html-report-style.xsl"
 "codenarc/codenarc.xml"
 ```
+
 Kotlin config types
+
 ```
 "detekt/config.yml"
 ```
 
 ## Plugin local testing
+
 Add to plugin `build.gradle` file
-```
+
+```.groovy
 // https://docs.gradle.org/current/userguide/publishing_gradle_plugins.html
 
 publishing {
@@ -59,12 +85,16 @@ publishing {
     }
 }
 ```
+
 Start publishing
-```
+
+```.shell
 ./gradlew publish
 ```
+
 Add to target project `settings.gradle` file
-```
+
+```.groovy
 // https://docs.gradle.org/current/userguide/plugins.html#sec:custom_plugin_repositories
 
 pluginManagement {
@@ -77,7 +107,8 @@ pluginManagement {
 }
 ```
 
-## Publishing to portal 
-``` 
+## Publishing to portal
+
+```.shell
 ./gradlew publishPlugins -Pgradle.publish.key= -Pgradle.publish.secret=
 ```
