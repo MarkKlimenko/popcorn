@@ -14,7 +14,7 @@ buildscript {
         coverageExclusion = ['**/**']
 
         // versions
-        codeQualityVersion = "1.1"
+        codeQualityVersion = "1.2.1"
     }
 }
 
@@ -33,7 +33,7 @@ buildscript {
 }
 
 plugins {
-    val codeQualityVersion = "1.1"
+    val codeQualityVersion = "1.2.1"
     id("com.markklim.popcorn.quality") version "$codeQualityVersion"
 }
 ```

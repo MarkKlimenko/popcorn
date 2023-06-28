@@ -15,14 +15,14 @@ abstract class AbstractStyleConfigInitializer(
         val toFile = File(to, path)
 
         if (!toFile.parentFile.exists() && !toFile.parentFile.mkdirs() && !toFile.createNewFile()) {
-            throw IllegalStateException("Failed to create directories: ${toFile.parentFile.absolutePath}")
+            error("Failed to create directories: ${toFile.parentFile.absolutePath}")
         }
 
         val sourceStream: InputStream = if (fromFile.exists()) {
             FileInputStream(fromFile)
         } else {
             this.javaClass.getResourceAsStream("/style/$path")
-                ?: throw IllegalStateException("Default styles not found")
+                ?: error("Default styles not found")
         }
 
         toFile.createNewFile()

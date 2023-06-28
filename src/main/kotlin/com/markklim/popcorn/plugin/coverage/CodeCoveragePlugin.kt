@@ -26,10 +26,14 @@ class CodeCoveragePlugin : Plugin<Project> {
                 DEFAULT_EXCLUSION
             }
 
-        project.extensions.configure(JacocoPluginExtension::class.java) { plugin ->
-            plugin.toolVersion = JACOCO_VERSION
-        }
+        project.setupJacocoPluginExtension()
+        project.setupJacocoReport(jacocoExclusion)
+        project.setupTestTask()
+        project.setupJacocoCoverageVerification(jacocoExclusion)
+        project.setupAfterEvaluate()
+    }
 
+    private fun Project.setupJacocoReport(jacocoExclusion: List<String>) {
         project.tasks.withType(JacocoReport::class.java) { report ->
             report.reports {
                 it.xml.required.set(false)
@@ -49,13 +53,23 @@ class CodeCoveragePlugin : Plugin<Project> {
                 ))
             }
         }
+    }
 
+    private fun Project.setupJacocoPluginExtension() {
+        project.extensions.configure(JacocoPluginExtension::class.java) { plugin ->
+            plugin.toolVersion = JACOCO_VERSION
+        }
+    }
+
+    private fun Project.setupTestTask() {
         project.tasks.withType(Test::class.java) { test ->
             test.extensions.configure(JacocoTaskExtension::class.java) {
                 it.destinationFile = project.file("${project.buildDir}/jacoco/test.exec")
             }
         }
+    }
 
+    private fun Project.setupJacocoCoverageVerification(jacocoExclusion: List<String>) {
         project.tasks.withType(JacocoCoverageVerification::class.java) { verification ->
             verification.violationRules.rule { rule ->
                 rule.element = "CLASS"
@@ -75,7 +89,9 @@ class CodeCoveragePlugin : Plugin<Project> {
                 }
             }
         }
+    }
 
+    private fun Project.setupAfterEvaluate() {
         project.afterEvaluate {
             project.tasks.findByName("test")
                 ?.finalizedBy(JACOCO_TEST_REPORT)

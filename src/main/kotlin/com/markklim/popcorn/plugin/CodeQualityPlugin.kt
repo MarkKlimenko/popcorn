@@ -38,11 +38,11 @@ class CodeQualityPlugin : Plugin<Project> {
     }
 
     private companion object {
-        const val KOTLIN_LANGUAGE_LOCATION = "src/main/kotlin"
-        const val JAVA_LANGUAGE_LOCATION = "src/main/java"
-        const val GROOVY_LANGUAGE_LOCATION = "src/main/groovy"
+        private const val KOTLIN_LANGUAGE_LOCATION = "src/main/kotlin"
+        private const val JAVA_LANGUAGE_LOCATION = "src/main/java"
+        private const val GROOVY_LANGUAGE_LOCATION = "src/main/groovy"
 
-        val SUPPORTED_LANGUAGE_LOCATIONS: List<String> = listOf(
+        private val SUPPORTED_LANGUAGE_LOCATIONS: List<String> = listOf(
             KOTLIN_LANGUAGE_LOCATION,
             JAVA_LANGUAGE_LOCATION,
             GROOVY_LANGUAGE_LOCATION,

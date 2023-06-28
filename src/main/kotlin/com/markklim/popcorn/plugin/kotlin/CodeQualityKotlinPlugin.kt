@@ -16,7 +16,6 @@ class CodeQualityKotlinPlugin : Plugin<Project> {
 
         project.extensions.configure(DetektExtension::class.java) {
             it.config = project.files("${project.rootDir}/$DETECT_CONFIG_PATH")
-
         }
 
         project.tasks.withType(Detekt::class.java) {
@@ -33,9 +32,9 @@ class CodeQualityKotlinPlugin : Plugin<Project> {
     }
 
     private companion object {
-        const val DETECT_CONFIG_PATH = "$GRADLE_CONFIG_PATH/detekt/config.yml"
-        const val DETEKT_PLUGINS = "detektPlugins"
-        const val DETEKT_VERSION = "1.21.0"
+        private const val DETECT_CONFIG_PATH = "$GRADLE_CONFIG_PATH/detekt/config.yml"
+        private const val DETEKT_PLUGINS = "detektPlugins"
+        private const val DETEKT_VERSION = "1.21.0"
     }
 }
 
