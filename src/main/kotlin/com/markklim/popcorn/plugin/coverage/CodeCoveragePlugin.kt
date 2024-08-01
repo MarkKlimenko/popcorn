@@ -124,7 +124,7 @@ class CodeCoveragePlugin : Plugin<Project> {
     companion object {
         const val COVERAGE_EXCLUSION_PROPERTY = "coverageExclusion"
 
-        private const val JACOCO_VERSION = "0.8.8"
+        private const val JACOCO_VERSION = "0.8.11"
 
         private const val JACOCO_TEST_COVERAGE_VERIFICATION = "jacocoTestCoverageVerification"
         private const val JACOCO_TEST_REPORT = "jacocoTestReport"

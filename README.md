@@ -6,6 +6,14 @@ Gradle quality plugin
 
 ### Gradle setup
 
+**IMPORTANT!!!**
+
+Plugin is tightly configured for kotlin version 1.9.23
+
+```kotlin
+kotlin("plugin.spring") version "1.9.23"
+```
+
 ```.groovy
 // build.gradle
 
@@ -14,7 +22,7 @@ buildscript {
         coverageExclusion = ['**/**']
 
         // versions
-        codeQualityVersion = "1.2.1"
+        codeQualityVersion = "1.3.1"
     }
 }
 
@@ -33,7 +41,7 @@ buildscript {
 }
 
 plugins {
-    val codeQualityVersion = "1.2.1"
+    val codeQualityVersion = "1.3.1"
     id("com.markklim.popcorn.quality") version "$codeQualityVersion"
 }
 ```
@@ -102,6 +110,15 @@ pluginManagement {
         maven {
             url '../local-plugin-repository'
         }
+        gradlePluginPortal()
+    }
+}
+```
+
+```.kts
+pluginManagement {
+    repositories {
+        maven(url = "../local-plugin-repository")
         gradlePluginPortal()
     }
 }
